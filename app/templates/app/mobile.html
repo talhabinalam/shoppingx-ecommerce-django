@@ -1,14 +1,30 @@
 {% extends 'app/base.html' %}
 {% load static %}
-{% block title %}Buy Now{% endblock title %}
+{% block title %}Mobiles{% endblock title %}
 {% block main-content %}
 <div class="container my-5">
  <div class="row">
   <div class="col-sm-3">
-   Side Bar for Mobile filter
+   <div class="list-group">
+    <a href="{% url 'mobile' %}" class="list-group-item list-group-item-action" aria-current="true">All Mobile</a>
+    <a href="{% url 'mobiledata' 'Samsung' %}" class="list-group-item list-group-item-action" aria-current="true">Samsung</a>
+    <a href="{% url 'mobiledata' 'Realme' %}" class="list-group-item list-group-item-action" aria-current="true">Realme</a>
+    <a href="{% url 'mobiledata' 'Xiaomi' %}" class="list-group-item list-group-item-action" aria-current="true">Xiaomi</a>
+   </div>
   </div>
-  <div class="col-sm-8 offset-sm-1">
-   Mobile Product List
+  <div class="col-sm-8">
+    <div class="row">
+        {% for product in mobiles %}
+        <div class="col-sm-4 text-center mb-4">
+            <a href="{% url 'product_detail' product.id %}" class="btn">
+                <div class="item">
+                <div class="fw-bold">{{product.title}}</div>
+                <div class="fw-bold">${{product.discount_price}}
+                <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small></div>
+            </div>
+            </a>
+        </div>
+    </div>
   </div>
  </div>
 </div>

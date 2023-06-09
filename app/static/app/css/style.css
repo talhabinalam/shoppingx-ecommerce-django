@@ -19,3 +19,17 @@
  font-size: 24px;
  font-weight: bold;
 }
+
+/* custom.css */
+.product {
+    margin-bottom: 20px;
+  }
+  
+  .product-image {
+    max-width: 200px;
+    height: auto;
+  }
+
+  .view-details-link {
+    margin-left: 10px;
+  }

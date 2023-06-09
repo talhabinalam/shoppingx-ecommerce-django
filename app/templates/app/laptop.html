@@ -1,0 +1,33 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Laptops{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+   <div class="list-group">
+    <a href="{% url 'laptop' %}" class="list-group-item list-group-item-action" aria-current="true">All Laptop</a>
+    <a href="{% url 'laptopdata' 'HP' %}" class="list-group-item list-group-item-action" aria-current="true">HP</a>
+    <a href="{% url 'laptopdata' 'Dell' %}" class="list-group-item list-group-item-action" aria-current="true">Dell</a>
+    <a href="{% url 'laptopdata' 'Acer' %}" class="list-group-item list-group-item-action" aria-current="true">Acer</a>
+   </div>
+  </div>
+  <div class="col-sm-8">
+    <div class="row">
+        {% for l in laptops %}
+        <div class="col-sm-4 text-center mb-4">
+            <a href="{% url 'product-detail' l.id %}" class="btn">
+                <div class="item">
+                    <img src="{{l.product_image.url}}" alt="" height="150">
+                <div class="fw-bold">{{l.title}}</div>
+                <div class="fw-bold">${{l.discount_price}}
+                <small class="fw-light text-decoration-line-through">{{l.selling_price}}</small></div>
+            </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

@@ -10,20 +10,24 @@
     <a href="{% url 'mobiledata' 'Samsung' %}" class="list-group-item list-group-item-action" aria-current="true">Samsung</a>
     <a href="{% url 'mobiledata' 'Realme' %}" class="list-group-item list-group-item-action" aria-current="true">Realme</a>
     <a href="{% url 'mobiledata' 'Xiaomi' %}" class="list-group-item list-group-item-action" aria-current="true">Xiaomi</a>
+    <a href="{% url 'mobiledata' 'above' %}" class="list-group-item list-group-item-action" aria-current="true">Above $500</a>
+    <a href="{% url 'mobiledata' 'below' %}" class="list-group-item list-group-item-action" aria-current="true">Below $500</a>
    </div>
   </div>
   <div class="col-sm-8">
     <div class="row">
-        {% for product in mobiles %}
+        {% for m in mobiles %}
         <div class="col-sm-4 text-center mb-4">
-            <a href="{% url 'product_detail' product.id %}" class="btn">
+            <a href="{% url 'product-detail' m.id %}" class="btn">
                 <div class="item">
-                <div class="fw-bold">{{product.title}}</div>
-                <div class="fw-bold">${{product.discount_price}}
-                <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small></div>
+                    <img src="{{m.product_image.url}}" alt="" height="200">
+                <div class="fw-bold">{{m.title}}</div>
+                <div class="fw-bold">${{m.discount_price}}
+                <small class="fw-light text-decoration-line-through">{{m.selling_price}}</small></div>
             </div>
             </a>
         </div>
+        {% endfor %}
     </div>
   </div>
  </div>

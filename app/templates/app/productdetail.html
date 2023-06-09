@@ -10,9 +10,14 @@
   <div class="col-sm-5 offset-sm-1">
    <h2>Product Title: {{product.title}}</h2>
    <hr>
-   <p>{{product.description}}</p> <br>
+   <p>{{product.description|linebreaks}}</p> <br>
    <h4>${{product.selling_price}} <small class="fw-light text-decoration-line-through">{{product.discount_price}}</small></h4> <br>
-   <a href="{% url 'add-to-cart' %}" class="btn btn-primary shadow px-5 py-2">Add to Cart</a>
+
+   <form action="/add-to-cart" class="d-inline">
+    <input type="hidden" name="pro_id" value={{product.id}} id="pro_id">
+    <button type="submit" class="btn btn-primary shadow px-5 py-2">Add to Cart</button>
+   </form>
+
    <a href="{% url 'buy-now' %}" class="btn btn-danger shadow px-5 py-2 ms-4">Buy Now</a>
    <h5 class="mt-5">Available Offers</h5>
    <ul>
